@@ -44,7 +44,7 @@ def test(data,
     half = device.type != 'cpu' and torch.cuda.device_count() == 1  # half precision only supported on single-GPU
     if half:
         model.half()  # to FP16
-        print("多GPU")
+        # print("多GPU")
     # Configure
     model.eval()
     with open(data) as f:

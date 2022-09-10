@@ -1,7 +1,7 @@
 path: ../datasets/ccpd/det
-train: images/train
-val: images/val
-test: images/test
+train: U:/ML/TmpDatasets/CCPD/Own/images/train
+val: U:/ML/TmpDatasets/CCPD/Own/images/val
+test: U:/ML/TmpDatasets/CCPD/Own/images/test
 
 nc: 1
 names: ['licence']

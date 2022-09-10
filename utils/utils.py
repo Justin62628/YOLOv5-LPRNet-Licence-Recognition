@@ -459,7 +459,7 @@ def compute_loss(p, targets, model):  # predictions, targets, model
             pxy = ps[:, :2].sigmoid() * 2. - 0.5
             pwh = (ps[:, 2:4].sigmoid() * 2) ** 2 * anchors[i]
             pbox = torch.cat((pxy, pwh), 1)  # predicted box
-            print("////",pbox.shape,tbox[i].shape,pbox.t().shape)
+            # print("////",pbox.shape,tbox[i].shape,pbox.t().shape)
             giou = bbox_iou(pbox.t(), tbox[i], x1y1x2y2=False, GIoU=True)  # giou(prediction, target)
             lbox += (1.0 - giou).sum() if red == 'sum' else (1.0 - giou).mean()  # giou loss
 
@@ -625,8 +625,8 @@ def non_max_suppression(prediction, conf_thres=0.1, iou_thres=0.6, merge=False, 
                 pass
 
         output[xi] = x[i]
-        if (time.time() - t) > time_limit:
-            break  # time limit exceeded
+        # if (time.time() - t) > time_limit:
+        #     break  # time limit exceeded
 
     return output
 

@@ -50,10 +50,10 @@ def adjust_learning_rate(optimizer, cur_epoch, base_lr, lr_schedule):
 
 def get_parser():
     parser = argparse.ArgumentParser(description='parameters to train net')
-    parser.add_argument('--max_epoch', default=100, help='epoch to train the network')
+    parser.add_argument('--max_epoch', default=200, help='epoch to train the network')
     parser.add_argument('--img_size', default=[94, 24], help='the image size')
-    parser.add_argument('--train_img_dirs', default=r"K:\MyProject\datasets\ccpd\rec\train", help='the train images path')
-    parser.add_argument('--test_img_dirs', default=r"K:\MyProject\datasets\ccpd\rec\val", help='the test images path')
+    parser.add_argument('--train_img_dirs', default=r"U:\ML\TmpDatasets\CCPD\OwnLpr\images\train", help='the train images path')
+    parser.add_argument('--test_img_dirs', default=r"U:\ML\TmpDatasets\CCPD\OwnLpr\images\test", help='the test images path')
     parser.add_argument('--dropout_rate', default=0.5, help='dropout rate.')
     parser.add_argument('--learning_rate', default=0.01, help='base value of learning rate.')
     parser.add_argument('--lpr_max_len', default=8, help='license plate number max length.')
@@ -70,7 +70,7 @@ def get_parser():
     parser.add_argument('--lr_schedule', default=[20, 40, 60, 80, 100], help='schedule for learning rate.')
     parser.add_argument('--save_folder', default=r'../runs',
                         help='Location to save checkpoint models')
-    parser.add_argument('--pretrained_model', default='', help='no pretrain')
+    parser.add_argument('--pretrained_model', default='weights/lprnet_best.pth', help='no pretrain')
 
     args = parser.parse_args()
 
@@ -212,7 +212,9 @@ def Greedy_Decode_Eval(Net, datasets, args):
     # TestNet = Net.eval()
     epoch_size = len(datasets) // args.test_batch_size
     batch_iterator = iter(DataLoader(datasets, args.test_batch_size, shuffle=True, num_workers=args.num_workers, collate_fn=collate_fn))
-
+    if epoch_size <= 0:
+        print("No Valid Eval")
+        return
     Tp = 0
     Tn_1 = 0
     Tn_2 = 0

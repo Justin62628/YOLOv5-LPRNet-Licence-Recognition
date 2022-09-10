@@ -46,7 +46,7 @@ def train(hyp):
     print(f'Hyperparameters {hyp}')
     log_dir = tb_writer.log_dir  # run directory
     wdir = str(Path(log_dir) / 'weights') + os.sep  # weights directory
-    print("adkjg;ajg;lfkjdsg",wdir)
+    print(wdir)
     os.makedirs(wdir, exist_ok=True)
     last = wdir + 'yolov5_best.pt'
     best = wdir + 'best.pt'
@@ -360,14 +360,14 @@ def train(hyp):
 if __name__ == '__main__':
     check_git_status()
     parser = argparse.ArgumentParser()
-    parser.add_argument('--cfg', type=str, default='', help='model.yaml path')
-    parser.add_argument('--data', type=str, default='', help='data.yaml path')
+    parser.add_argument('--cfg', type=str, default='models/yolov5s.yaml', help='model.yaml path')
+    parser.add_argument('--data', type=str, default='data/ccpd.yaml', help='data.yaml path')
     parser.add_argument('--hyp', type=str, default='', help='hyp.yaml path (optional)')
-    parser.add_argument('--weights', type=str, default='', help='initial weights path')
-    parser.add_argument('--epochs', type=int, default=100)
-    parser.add_argument('--batch-size', type=int, default=12)
+    parser.add_argument('--weights', type=str, default='weights/yolov5_best.pt', help='initial weights path')
+    parser.add_argument('--epochs', type=int, default=200)  # max epochs
+    parser.add_argument('--batch-size', type=int, default=5)
     parser.add_argument('--img-size', nargs='+', type=int, default=[640, 640], help='train,test sizes')
-    parser.add_argument('--device', default='', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
+    parser.add_argument('--device', default='0', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
 
     parser.add_argument('--rect', action='store_true', help='rectangular training')
     parser.add_argument('--resume', nargs='?', const='get_last', default=False,

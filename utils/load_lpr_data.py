@@ -1,4 +1,6 @@
-from imutils import paths
+import glob
+
+# from imutils import paths
 import numpy as np
 import random
 import cv2
@@ -23,7 +25,7 @@ class LPRDataLoader(Dataset):
         self.img_dir = img_dir
         self.img_paths = []
         for i in range(len(img_dir)):
-            self.img_paths += [el for el in paths.list_images(img_dir[i])]
+            self.img_paths += [el for el in glob.glob(img_dir[i]+"/*.jpg")]
         random.shuffle(self.img_paths)
         self.img_size = imgSize
         self.lpr_max_len = lpr_max_len
