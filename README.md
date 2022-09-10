@@ -1,7 +1,5 @@
 # 信后与系统实验-光学车牌检测识别项目（CCPD数据集）
 
-[toc]
-
 ## 方案
 ### 第一套方案（保底方案）
 使用 [YOLOv5s和LPRNet](https://blog.csdn.net/qq_38253797/article/details/125054464) 对CCPD车牌进行检测和识别。
@@ -48,7 +46,7 @@ LPRNet| test | 100 | 94.30% | 1.7M
 用 [YOLOv5s](https://github.com/ultralytics/yolov5) 进行车牌检测，用 [SwinTextSpotter](https://github.com/mxin262/SwinTextSpotter) 进行车牌识别。
 
 #### 模型性能
-- [] TODO
++ [ ] TODO
 
 #### 不足和改进空间
 - 参数量大
@@ -57,7 +55,7 @@ LPRNet| test | 100 | 94.30% | 1.7M
 使用[一套端对端方案](https://github.com/chenjun2hao/CLPR.pytorch) 对CCPD车牌进行检测和识别。
 
 #### 模型性能
-- [] TODO
++ [ ] TODO
 
 #### 不足和改进空间
 - 不好改进
